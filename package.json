@@ -1,0 +1,33 @@
+{
+  "name": "keycred",
+  "version": "0.0.1",
+  "description": "A Key Credential generator for Office 365 Applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "keycred": "./bin/keycred"
+  },
+  "homepage": "http://github.com/travist/keycred",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/travist/keycred.git"
+  },
+  "bugs": {
+    "url": "http://github.com/travist/keycred/issues"
+  },
+  "author": {
+    "name": "Travis Tidwell",
+    "email": "travis@form.io",
+    "url": "http://github.com/travist"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "nconf": "^0.7.2",
+    "node-forge": "^0.6.34",
+    "node-uuid": "^1.4.3",
+    "prompt": "^0.2.14"
+  }
+}
