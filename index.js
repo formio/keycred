@@ -48,6 +48,11 @@ var generateKeyCred = function(privateKey, cert) {
   console.log('');
   console.log('Certificate:');
   console.log(forge.pki.certificateToPem(cert).green);
+
+  // Print out the certificate fingerprint
+  console.log('');
+  console.log('Certificate Fingerprint:');
+  console.log(digest.toHex().green);
 };
 
 var privateKey = nconf.get('key');

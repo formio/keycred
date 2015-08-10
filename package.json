@@ -1,6 +1,6 @@
 {
   "name": "keycred",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Key Credential generator for Office 365 Applications.",
   "main": "index.js",
   "scripts": {
