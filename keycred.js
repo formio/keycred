@@ -6,7 +6,7 @@ var uuid = require('node-uuid');
  * @param certparams
  * @constructor
  */
-var KeyCred = function(certparams) {
+var KeyCred = function (certparams) {
     var keys = forge.pki.rsa.generateKeyPair(2048);
     this.publicKey = keys.publicKey;
     this.privateKey = keys.privateKey;
@@ -20,7 +20,7 @@ var KeyCred = function(certparams) {
  * @param privateKey
  * @param cert
  */
-KeyCred.fromPem = function(privateKey, cert) {
+KeyCred.fromPem = function (privateKey, cert) {
     this.privateKey = forge.pki.privateKeyFromPem(privateKey);
     this.cert = forge.pki.certificateFromPem(cert, true);
     this.keycred = null;
@@ -30,13 +30,17 @@ KeyCred.fromPem = function(privateKey, cert) {
 /**
  * Create a new certificate.
  */
-KeyCred.prototype.createCertificate = function(certparams) {
+KeyCred.prototype.createCertificate = function (certparams) {
     var cert = forge.pki.createCertificate();
     cert.publicKey = this.publicKey;
     cert.serialNumber = '01';
     cert.validity.notBefore = new Date();
     cert.validity.notAfter = new Date();
-    cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 1);
+    var expireInYears = 1;
+    if (certparams.expireInYears) {
+        expireInYears = parseInt(certparams.expireInYears);
+    }
+    cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + expireInYears);
     var attrs = [{
         name: 'commonName',
         value: certparams.commonName
@@ -96,7 +100,7 @@ KeyCred.prototype.createCertificate = function(certparams) {
 /**
  * Generate the keycred.
  */
-KeyCred.prototype.generate = function() {
+KeyCred.prototype.generate = function () {
 
     // Convert the Certificate to DER format.
     var certDER = forge.asn1.toDer(forge.pki.certificateToAsn1(this.cert));
@@ -121,7 +125,7 @@ KeyCred.prototype.generate = function() {
 /**
  * Get the KeyCred in JSON form.
  */
-KeyCred.prototype.toJSON = function() {
+KeyCred.prototype.toJSON = function () {
     if (!this.keycred) {
         this.generate();
     }

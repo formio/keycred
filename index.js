@@ -13,7 +13,7 @@ require('colors');
  * @param publicKey
  * @param cert
  */
-var printKeyCred = function(keycred) {
+var printKeyCred = function (keycred) {
 
   // Convert the keycred to JSON.
   keycred = keycred.toJSON();
@@ -59,7 +59,7 @@ else {
         required: true
       }
     }
-  }, function(err, params) {
+  }, function (err, params) {
     if (parseInt(params.newcert, 10) === 1) {
       prompt.get({
         properties: {
@@ -81,8 +81,11 @@ else {
           commonName: {
             description: 'Common Name (e.g. server FQDN or YOUR name)'
           },
+          expireInYears: {
+            description: 'Number of years until expiration (default is 1)'
+          }
         }
-      }, function(err, certparams) {
+      }, function (err, certparams) {
         printKeyCred(new KeyCred(certparams));
       });
     }
@@ -98,7 +101,7 @@ else {
             required: true
           }
         }
-      }, function(err, fileparams) {
+      }, function (err, fileparams) {
 
         // Print the keycred from the provided PEM files.
         printKeyCred(new KeyCred.fromPem(
