@@ -39,7 +39,7 @@ prompt: Locality Name (eg, city) []:  Dallas
 prompt: Organization Name (eg, company) [Internet Widgits Pty Ltd]:  Form.io
 prompt: Organizational Unit Name (eg, section) []:  IT
 prompt: Common Name (e.g. server FQDN or YOUR name):  Travis Tidwell
-prompt: Number of years until expiration (default is 1, max is 50):  3
+prompt: Number of years until expiration (default is 1, max is 30):  3
 Generating key pairs
 Creating a certificate.
 Signing the certificate.

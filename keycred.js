@@ -40,7 +40,7 @@ KeyCred.prototype.createCertificate = function (certparams) {
     if (certparams.expireInYears) {
         expireInYears = parseInt(certparams.expireInYears);
     }
-    if (expireInYears > 50) expireInYears = 50;
+    if (expireInYears > 30) expireInYears = 30;
     cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + expireInYears);
     var attrs = [{
         name: 'commonName',

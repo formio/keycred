@@ -82,7 +82,7 @@ else {
             description: 'Common Name (e.g. server FQDN or YOUR name)'
           },
           expireInYears: {
-            description: 'Number of years until expiration (default is 1, max is 50)'
+            description: 'Number of years until expiration (default is 1, max is 30)'
           }
         }
       }, function (err, certparams) {
